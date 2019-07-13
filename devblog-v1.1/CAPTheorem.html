@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>AforAlgo-Blog dedicated to Algorithm and Distributed systems</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+    <script defer src="assets/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="assets/css/monokai-sublime.min.css">
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
+    
+
+</head> 
+
+<body>
+    
+    <header class="header text-center">	    
+	    <h1 class="blog-name pt-lg-4 mb-0"><a href="index.html">Shishir's Blog</a></h1>
+        
+	    <nav class="navbar navbar-expand-lg navbar-dark" >
+           
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div id="navigation" class="collapse navbar-collapse flex-column" >
+				<div class="profile-section pt-3 pt-lg-0">
+				    <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/profile2.png" alt="image" >			
+					
+					<div class="bio mb-3">Hi, my name is Shishir. I work as Lead SDET in PayU. I have passion for technology and my focus area is distributed System.<br><a href="#">Find out more about me</a></div><!--//bio-->
+					<ul class="social-list list-inline py-3 mx-auto">
+			            
+			            <li class="list-inline-item"><a href="https://www.linkedin.com/in/shishir-dwivedi-8b623647/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+			           
+			        </ul><!--//social-list-->
+			        <hr> 
+				</div><!--//profile-section-->
+				
+				<ul class="navbar-nav flex-column text-left">
+					<li class="nav-item">
+					    <a class="nav-link" href="index.html"><i class="fas fa-home fa-fw mr-2"></i>Blog Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+					    <a class="nav-link" href="blog-post.html"><i class="fas fa-bookmark fa-fw mr-2"></i>Blog Post</a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="about.html"><i class="fas fa-user fa-fw mr-2"></i>About Me</a>
+					</li>
+				</ul>
+				
+				
+			</div>
+		</nav>
+    </header>
+    
+    <div class="main-wrapper">
+	    
+	    <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container">
+			    <header class="blog-post-header">
+				    <h2 class="title mb-2">CAP Theorem: Plan english version</h2>
+				    <div class="meta mb-3"><span class="date">Published 3 months ago</span><span class="time">15 min read</span><span class="comment"><a href="#">4 comments</a></span></div>
+			    </header>
+			    
+			    <div class="blog-post-body">
+				   
+				    <p>You’ll often hear about the CAP theorem which specifies some kind of an upper limit when designing distributed systems. As with most of my other introduction tutorials, lets try understanding CAP by comparing it with a real world situation. </p>
+				    
+				    <h3 class="mt-5 mb-3">Chapter 1: “Remembrance Inc” Your new venture :</h3>
+				    <p>Last night when your spouse appreciated you on remembering her birthday and bringing her a gift, a strange Idea strikes you. People are so bad in remembering things. And you’re sooo good at it. So why not start a venture that will put your talent to use? The more you think about it, the more you like it. In fact you even come up with a news paper ad which explains your idea </p>
+				    <pre>
+					    <code>
+Remembrance Inc! - Never forget,  even without remembering!
+Ever felt bad that you forget so much?  Don't worry. Help is just a phone away!
+When you need to remember something, just call 555--55-REMEM and tell us what you need to remember. 
+or eg., call us and let us know of your boss's phone number, and forget to remember it. when you need to know it back.. 
+call back the same number[(555)--55-REMEM ] and we'll tell you what's your boss's phone number.
+Charges : only $0.1 per request
+					    </code>
+					</pre>
+					<p>So, your typical phone conversation will look like this:</p>
+				    <ul class="mb-5">
+					  <li class="mb-2">Customer : Hey, Can you store my neighbor’s birthday?</li>
+					  <li class="mb-2">You: Sure.. when is it?</li>
+					  <li class="mb-2">Customer : 2nd of jan</li>
+					  <li>You: (write it down against the customer’s page in your paper note book )Stored. Call us any time for knowing your neighbor’s birthday again!</li>
+					  <li>Customer : Thank you!</li>
+					  <li>You: No problem! We charged your credit card with $0.1</li>
+					</ul>
+					<h3 class=mt-5 mb-3>Chapter 2 : You scale up:</h3>
+					<p>Your venture gets funded by YCombinator. Your Idea is so simple, needs nothing but a paper notebook and phone, yet so effective that it spreads like wild fire. You start getting hundreds of call every day.</p>
+					<p>And there starts the problem. You see that more and more of your customers have to wait in the queue to speak to you. Most of them even hang up tired of the waiting tone. Besides when you were sick the other day and could not come to work you lost a whole day of business. Not to mention all those dissatisfied customers who wanted information on that day.
+						You decide it’s time for you to scale up and bring in your wife to help you.</p>
+					<p>Your start with a simple plan:</p>
+					<ol class="mb-5">
+						<li class="mb-2">You and your wife both get an extension phone</li>
+						<li class="mb-2">Customers still dial (555)–55-REMEM and need to remember only one number</li>
+						<li class="mb-2">A pbx will route the a customers call to whoever is free and equally</li>
+					  </ol>
+
+					<h3 class="mt-5 mb-3">Chapter 3 : You have your first “Bad Service” :</h3>
+					<p>Two days after you implemented the new system, you get a call from you get a call from your trusted customer Jhon. This is how it goes:</p>
+					<ul class="mb-5">
+						<li>Jhon: Hey</li>
+						<li>You: Glad you called “Remembrance Inc!”. What can I do for you?</li>
+						<li>Jhon: Can you tell me when is my flight to New Delhi?</li>
+						<li>You: Sure.. 1 sec sir (You look up your notebook)
+							(wow! there is no entry for “flight date” in Jhon’s page)!!!!!</li>
+						 
+						<li>You: Sir, I think there is a mistake. You never told us about your flight to delhi</li>
+						<li>Jhon: What! I just called you guys yesterday!(cuts the call!)</li>
+					</ul>
+					<p>How did that happen? Could Jhon be lying? You think about it for a second and the reason hits you! Could Jhon’s call yesterday reached your wife? You go to your wife’s desk and check her notebook. Sure enough it’s there. You tell this to your wife and she realizes the problem too.</p>
+					<p>What a terrible flaw in your distributed design!<b> Your distributed system is not consistent! There could always be a chance that a customer updates something which goes to either you or your wife and when the next call from the customer is routed to another person there will not be a consistent reply from Remembrance Inc!</b></p>
+					<h3 class="mt-5 mb-3">Chapter 4: You fix the Consistency problem:</h3>
+					<p>Well, your competitors may ignore a bad service, but not you. You think all night in the bed when your wife is sleeping and come up with a beautiful plan in the morning. You wake up your wife and tell her:</p>
+					<p>Darling this is what we are going to do from now”</p>
+					<ul class="mb-5">
+						<li>Whenever any one of us get a call for an update(when the customer wants us to remember something) before completing the call we tell the other person</li>
+						<li>This way both of us note down any updates</li>
+						<li>When there is call for search(When the customer wants information he has already stored) we don’t need to talk with the other person. Since both of us have the latest updated information in both of our note books we can just refer to it..</li>
+
+					</ul>
+					<p>There is only one problem though, you say, and that is an “update” request has to involve both of us and we cannot work in parallel during that time. For eg. when you get an update request and telling me to update too, i cannot take other calls. But that’s okay because most calls we get anyway are “search” (a customer updates once and asks many times) . Besides, we cannot give wrong information at any cost.</p>
+					<p>“Neat” your wife says, “but there is one more flaw in this system that you haven’t thought of. What if one of us doesn’t report to work on a particular day? On that day, then, we won’t be able to take “any” Update calls, because the other person cannot be updated! We will have Availability problem , i.e, for eg., if an update request comes to me I will never be able to complete that call because even though I have written the update in my note book, I can never update you. So I can never complete the call!”</p>
+
+					<h3 class="mt-5 mb-3">Chapter 5: You come up with the greatest solution Ever:</h3>
+					<p>You being to realize a little bit on why distributed system might not be as easy as you thought at first. Is it that difficult to come up with a solution that could be both “Consistent and Available”? Could be difficult for others, but not for you!! Then next morning you come up with a solution that your competitors cannot think of in their dreams! You wake your wife up eagerly again..</p>
+					<p>” look” , you tell her.. “This is what we can do to be consistent and available” . The plan is mostly similar to what I told you yesterday:</p>
+					<ul class="mb-5">
+						<li>i) Whenever any one of us get a call for an update(when the customer wants us to remember something) before completing the call, if the other person is available we tell the other person. This way both of us note down any updates</li>
+						<li>ii) But if the other person is not available(doesn’t report to work) we send the other person an email about the update.</li>
+						<li>iii) The next day when the other person comes to work after taking a day off, He first goes through all the emails, updates his note book accordingly.. before taking his first call.</li>
+
+					</ul>
+					<p>Genius! You wife says! I can’t find any flaws in this systems. Let’s put it to use.. Remembrance Inc! is now both Consistent and available!</p>
+					
+					<h3 class="mt-5 mb-3">Chapter 6: Your wife gets angry :</h3>
+					<p>Everything goes well for a while. Your system is consistent. Your system works well even when one of you doesn’t report to work. But what if Both of you report to work and one of you doesn’t update the other person? Remember all those days you’ve been waking your wife up early with your Greatest-idea-ever-bullshit? * What if your wife decides to take calls but is too angry with you and decides not to update you for a day? Your idea totally breaks! Your idea so far is good for consistency and availability but is not Partition Tolerant!*</p>
+					<p>You can decide to be partition tolerant by deciding not to take any calls until you patch up with your wife.. Then your system will not be “available” during that time…</p>
+
+					<h3 class="mt-5 mb-3">Chapter 7: Conclusion :</h3>
+					<p>So Let’s look at CAP Theorem now. Its states that, when you are designing a distributed system you can get cannot achieve all three of Consistency, Availability and Partition tolerance. You can pick only two of:</p>
+					<ul class="mb-5">
+						<li>Consistency: You customers, once they have updated information with you, will always get the most updated information when they call subsequently. No matter how quickly they call back</li>
+						<li>Availability: Remembrance Inc will always be available for calls until any one of you(you or your wife) report to work.</li>
+						<li>Partition Tolerance: Remembrance Inc will work even if there is a communication loss between you and your wife!</li>
+					</ul>
+
+				<h3 class="mt-5 mb-3">Bonus : Eventual Consistency with a run around clerk :</h3>
+				<p>Here is another food for thought. You can have a run around clerk, who will update other’s notebook when one of your’s or your wife’s note books is updated. The greatest benefit of this is that, he can work in background and one of your or your wife’s “update” doesn’t have to block, waiting for the other one to update. This is how many NoSql systems work, one node updates itself locally and a background process synchronizes all other nodes accordingly… The only problem is that you will lose consistency of some time. For eg., a customer’s call reaches your wife first and before the clerk has a chance to update your notebook , the customer’ calls back and it reaches you. Then he won’t get a consistent reply.. But that said, this is not at all a bad idea if such cases are limited. For eg., assuming a customer won’t forget things so quickly that he calls back in 5 minutes.</p>
+				<p></p>
+				
+				
+				
+			
+				
+		    </div><!--//container-->
+	    </article>
+	    
+	    
+	    
+    </div><!--//main-wrapper-->
+    
+
+    <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
+    <div id="config-panel" class="config-panel d-none d-lg-block">
+        <div class="panel-inner">
+            <a id="config-trigger" class="config-trigger config-panel-hide text-center" href="#"><i class="fas fa-cog fa-spin mx-auto" data-fa-transform="down-6" ></i></a>
+            <h5 class="panel-title">Choose Colour</h5>
+            <ul id="color-options" class="list-inline mb-0">
+                <li class="theme-1 active list-inline-item"><a data-style="assets/css/theme-1.css" href="#"></a></li>
+                <li class="theme-2  list-inline-item"><a data-style="assets/css/theme-2.css" href="#"></a></li>
+                <li class="theme-3  list-inline-item"><a data-style="assets/css/theme-3.css" href="#"></a></li>
+                <li class="theme-4  list-inline-item"><a data-style="assets/css/theme-4.css" href="#"></a></li>
+                <li class="theme-5  list-inline-item"><a data-style="assets/css/theme-5.css" href="#"></a></li>
+                <li class="theme-6  list-inline-item"><a data-style="assets/css/theme-6.css" href="#"></a></li>
+                <li class="theme-7  list-inline-item"><a data-style="assets/css/theme-7.css" href="#"></a></li>
+                <li class="theme-8  list-inline-item"><a data-style="assets/css/theme-8.css" href="#"></a></li>
+            </ul>
+            <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
+        </div><!--//panel-inner-->
+    </div><!--//configure-panel-->
+
+    
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script src="assets/plugins/popper.min.js"></script> 
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    
+    <!-- Page Specific JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/blog.js"></script>
+    
+    <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+    <script src="assets/js/demo/style-switcher.js"></script>     
+    
+
+</body>
+</html> 
+
